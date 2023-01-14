@@ -1,0 +1,37 @@
+.btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.4375rem 0.625rem 0.4375rem 0.625rem;
+    transition: color .3s ease;
+
+    &:focus{
+        border: none
+    }
+
+    &:hover{
+        color: darken($color: white, $amount:15);
+    }
+   
+}
+
+.btn-primary{
+    background-color: $primary;
+    border-radius: 0.125rem;
+    transition: .3s ease;
+    
+    &:disabled {
+        
+        background-color: lighten($color: $primary, $amount: 30)
+    };
+
+     &:hover{
+      background-color:  darken($color: $primary, $amount: 10)
+    }
+}
+
+.btn-block{
+    width: 100%;
+}
