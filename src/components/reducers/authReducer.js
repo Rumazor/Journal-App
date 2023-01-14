@@ -1,10 +1,4 @@
 import { types } from "../../types/types";
-/*
-    {
-        uid: //random id
-        name: 'ruma'
-    }
-*/
 
 export const authReducer = (state = {}, action) => {
   switch (action.type) {
@@ -12,6 +6,7 @@ export const authReducer = (state = {}, action) => {
       return {
         uid: action.payload.uid,
         name: action.payload.displayName,
+        email: action.payload.email,
       };
     case types.logout:
       return {};
