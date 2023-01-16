@@ -63,7 +63,10 @@ export const LoginPage = () => {
   return (
     <>
       <h3 className="auth__title">Inicia sesión</h3>
-      <form onSubmit={handleLogin}>
+      <form
+        className="animate__animated animate__fadeIn animate_faster"
+        onSubmit={handleLogin}
+      >
         {msgError && <div className="auth__alert-error">{msgError}</div>}
         <input
           type="text"

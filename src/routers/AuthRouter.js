@@ -6,7 +6,7 @@ import { RegisterPage } from "../components/auth/RegisterPage";
 export const AuthRouter = () => {
   return (
     <div className="auth__main">
-      <div className="auth__box-container animate__animated animate__fadeIn">
+      <div className="auth__box-container ">
         <Routes>
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<RegisterPage />} />

@@ -14,6 +14,7 @@ import { auth } from "../firebase/firebase-config";
 
 import { uiFinishLoading, uiStartLoading } from "./ui";
 import { toast } from "react-toastify";
+import { noteLogout } from "./notes";
 
 const providerGoogle = new GoogleAuthProvider();
 const providerTwitter = new TwitterAuthProvider();
@@ -90,6 +91,8 @@ export const logout = () => {
   return async (dispatch) => {
     await signOut(auth).then(() => {
       dispatch(logoutFunction());
+      dispatch(noteLogout());
+
       toast.info(`Ha cerrado sesión`);
     });
   };

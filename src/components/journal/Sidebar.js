@@ -20,7 +20,6 @@ export const Sidebar = () => {
     <aside className="journal__sidebar">
       <div className="jornal__sidebar-navbar mt-5">
         <h3>
-          <i className="far fa-moon"></i>
           <span>{name}</span>
         </h3>
 

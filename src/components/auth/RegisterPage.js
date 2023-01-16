@@ -55,7 +55,10 @@ export const RegisterPage = () => {
   return (
     <>
       <h3 className="auth__title">Registro</h3>
-      <form onSubmit={handleRegister}>
+      <form
+        className="animate__animated animate__fadeIn animate_faster"
+        onSubmit={handleRegister}
+      >
         {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
@@ -97,19 +100,6 @@ export const RegisterPage = () => {
         </button>
 
         <div className="auth__social-networks">
-          <p>Registrate con google</p>
-          <div className="google-btn">
-            <div className="google-icon-wrapper">
-              <img
-                className="google-icon"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="google button"
-              />
-            </div>
-            <p className="btn-text">
-              <b>Sign in with google</b>
-            </p>
-          </div>
           <p className="mt-5">
             ¿Ya tienes una cuenta?{" "}
             <Link className="mt-5 link" to="/auth/login">

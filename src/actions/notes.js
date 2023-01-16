@@ -29,11 +29,20 @@ export const startNewNote = () => {
     );
 
     dispatch(activeNote(docRef.id, newNote));
+    dispatch(addNewNote(docRef.id, newNote));
   };
 };
 
 export const activeNote = (id, note) => ({
   type: types.notesNewActive,
+  payload: {
+    id,
+    ...note,
+  },
+});
+
+export const addNewNote = (id, note) => ({
+  type: types.notesFix,
   payload: {
     id,
     ...note,
@@ -114,4 +123,8 @@ export const startDeleting = (id) => {
 export const deleteNote = (id) => ({
   type: types.notesDelete,
   payload: id,
+});
+
+export const noteLogout = () => ({
+  type: types.notesLogoutCleaning,
 });

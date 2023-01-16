@@ -10,6 +10,7 @@ export const types = {
 
   notesNewEntry: "[Notes] New note",
   notesNewActive: "[Notes] Set active note",
+  notesFix: "[Notes] Set Sidebar Note",
   notesLoad: "[Notes] Load notes",
   notesUpdated: "[Notes] Update note ",
   notesFileUrl: "[Notes] Update image url",
