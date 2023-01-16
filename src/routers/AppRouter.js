@@ -17,6 +17,7 @@ import { login } from "../actions/auth";
 import { LoadingScreen } from "../components/loading/LoadingScreen";
 import { PublicRoutes } from "./PublicRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
+import { startLoadingNotes } from "../actions/notes";
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,18 @@ export const AppRouter = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user?.uid) {
-        dispatch(login(user.uid, user.displayName));
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-      setChecking(false);
-    });
+    setTimeout(() => {
+      onAuthStateChanged(auth, async (user) => {
+        if (user?.uid) {
+          dispatch(login(user.uid, user.displayName));
+          dispatch(startLoadingNotes(user.uid));
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+        setChecking(false);
+      });
+    }, 700);
   }, [dispatch, setChecking, setIsAuthenticated]);
 
   if (checking) {

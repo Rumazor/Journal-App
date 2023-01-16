@@ -14,7 +14,11 @@
     border-radius: 0.125rem;
     border-radius: 0.25rem;
     padding: 1.25rem;
-    max-width: 20rem;
+    max-width: 16rem;
+
+    @media screen and (min-width: 600px) {
+        max-width: 18rem;
+    }
 }
 
 .auth__title{

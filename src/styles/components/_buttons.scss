@@ -16,7 +16,14 @@
     }
    
 }
-
+.btn-danger {
+    border-radius: 0.25rem;
+    transition: all .5s ease;
+    background-color: rgba(238, 54, 54, 0.836);
+    &:hover{
+        background-color: darken($color: rgb(231, 46, 46), $amount:5);
+    }
+}
 .btn-primary{
     background-color: $primary;
     border-radius: 0.125rem;

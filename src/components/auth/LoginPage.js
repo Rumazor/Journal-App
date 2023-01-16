@@ -28,7 +28,6 @@ export const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (!loginIsValid) {
-      // aqui va el navigate
       return console.log("Formulario Correcto");
     }
     dispatch(startLoginEmailPassword(email, password));

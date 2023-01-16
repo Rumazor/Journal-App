@@ -1,28 +1,45 @@
 import React from "react";
+import moment from "moment/";
+import "moment/locale/es";
+import { capitalizeFirstLetter } from "../../helpers/mayus";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../actions/notes";
+moment.locale("Es");
 
-export const JournalEntry = () => {
+export const JournalEntry = ({ id, date, title, body, url }) => {
+  const noteDate = moment(date);
+  const dispatch = useDispatch();
+  const handleEntryClick = () => {
+    dispatch(
+      activeNote(id, {
+        date,
+        title,
+        body,
+        url,
+      })
+    );
+  };
+
   return (
-    <div className="journal__entry pointer">
-      <div
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundImage:
-            "url(https://www.salesforce.com/content/dam/blogs/ca/Blog%20Posts/bullet-journal-header.jpg)",
-        }}
-        className="journal__entry-picture"
-      ></div>
+    <div className="journal__entry pointer  " onClick={handleEntryClick}>
+      {url && (
+        <div
+          style={{
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundImage: `url(${url})`,
+          }}
+          className="journal__entry-picture"
+        ></div>
+      )}
       <div className="journal__entry-body">
-        <p className="journal__entry-title">Un nuevo dia</p>
-        <p className="journal__entry-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus,
-          odit?
-        </p>
+        <p className="journal__entry-title">{title}</p>
+        <p className="journal__entry-content">{body}</p>
       </div>
       <div className="journal__entry-date-box">
-        <span>Monday</span>
-        <h4>28</h4>
+        <span>{capitalizeFirstLetter(noteDate.format("dddd"))}</span>
+        <h4>{noteDate.format("Do")}</h4>
       </div>
     </div>
   );

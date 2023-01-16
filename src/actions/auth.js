@@ -11,6 +11,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
+
 import { uiFinishLoading, uiStartLoading } from "./ui";
 import { toast } from "react-toastify";
 
@@ -28,8 +29,9 @@ export const startLoginEmailPassword = (email, password) => {
         toast.success(`Bienvenido de vuelta ${user.displayName}`);
       })
       .catch((e) => {
-        console.log(e);
+        console.log({ e });
         dispatch(uiFinishLoading());
+        toast.error(`Error, ${e.code} `);
       });
   };
 };
@@ -46,7 +48,7 @@ export const startRegisterWithEmailPassword = (email, password, name) => {
       })
       .catch((e) => {
         console.log(e);
-        toast.error(`Algo ha salido mal, no se ha podido registrar tu cuenta`);
+        toast.error(`Error, ${e.code} `);
       });
   };
 };
@@ -62,7 +64,6 @@ export const startGoogleLogin = () => {
 export const startTwitterLogin = () => {
   return (dispatch) => {
     signInWithPopup(auth, providerTwitter).then(({ user }) => {
-      console.log(user);
       dispatch(login(user.uid, user.displayName, user.email));
       toast.success(`Bienvenido ${user.displayName}`);
     });
@@ -71,7 +72,6 @@ export const startTwitterLogin = () => {
 export const startFacebookLogin = () => {
   return (dispatch) => {
     signInWithPopup(auth, providerFacebook).then(({ user }) => {
-      console.log(user);
       dispatch(login(user.uid, user.displayName, user.email));
       toast.success(`Bienvenido ${user.displayName}`);
     });
